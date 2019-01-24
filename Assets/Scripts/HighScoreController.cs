@@ -7,9 +7,11 @@ public class HighScoreController : MonoBehaviour {
 
     public static HighScoreController instance;
 
-    public Text text;
+    public Text scoreText;
+    public Text filenameText;
 
-    float highScore = 0; 
+    float highScore = 0;
+    string filenameMSG = "";
 
     //Singelton Pattern
     void Awake()
@@ -45,7 +47,20 @@ public class HighScoreController : MonoBehaviour {
     public void ResetHighScore()
     {
         highScore = 0;
-        text.text = highScore.ToString();
+        scoreText.text = highScore.ToString();
+    }
+
+
+    public void setFilenameMSG(string saveOrload, string filename)
+    {
+        if(saveOrload == "save")
+        {
+            filenameMSG = "save to: " + filename;
+        }
+        else if(saveOrload == "load")
+        {
+            filenameMSG = "load from " + filename;
+        }
     }
 
     public void SetDisplayRandomScore()
@@ -54,16 +69,18 @@ public class HighScoreController : MonoBehaviour {
         highScore = GetRandomHighscore();
 
         Debug.Log("Set Text");
-        text.text = highScore.ToString();
+        scoreText.text = highScore.ToString();
 
         SaveGameData saveGameData = new SaveGameData();
         saveGameData.Save();
+        filenameText.text = filenameMSG;
     }
 
     public void LoadHighScore()
     {
         SaveGameData.Load();
-        text.text = highScore.ToString();
+        scoreText.text = highScore.ToString();
+        filenameText.text = filenameMSG;
     }
 
 }

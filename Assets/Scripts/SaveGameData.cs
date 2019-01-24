@@ -22,6 +22,7 @@ public class SaveGameData
 
         HighScoreController highscoreController = Component.FindObjectOfType<HighScoreController>(); //returns first GameObject HighScoreController in scene 
         highscore = highscoreController.GetHighScore(); // gets the current highscore saved in the HighscoreController GameObject
+        highscoreController.setFilenameMSG("save",GetFilename());
 
         // test = 123;
         string xml = XML.Save(this); //takes the XML Class --> using GameDevProfi.Utils
@@ -37,6 +38,7 @@ public class SaveGameData
         SaveGameData save = XML.Load<SaveGameData>(File.ReadAllText(GetFilename()));
         HighScoreController highscoreController = Component.FindObjectOfType<HighScoreController>();
         highscoreController.SetHighScore(save.highscore);
+        highscoreController.setFilenameMSG("load", GetFilename());
 
         return save;
     }
