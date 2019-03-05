@@ -13,5 +13,6 @@ Target platform: Standalone (Reference Resolution: 1024 x 768)
 </div>
 
 Third Party Material:
-Load/Save Data https://github.com/renebuehling/GDP-Toolkit
+* Load/Save Data https://github.com/renebuehling/GDP-Toolkit
+* https://www.gamedev-profi.de/gamedev-profi-toolkit/
 
